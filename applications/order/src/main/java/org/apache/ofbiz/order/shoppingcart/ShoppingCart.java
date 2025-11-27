@@ -945,7 +945,7 @@ public class ShoppingCart implements Iterable<ShoppingCartItem>, Serializable {
     public void ensureItemsQuantity(List<ShoppingCartItem> cartItems, LocalDispatcher dispatcher, BigDecimal quantity)
             throws CartItemModifyException {
         for (ShoppingCartItem item : cartItems) {
-            if (item.getQuantity() != quantity) {
+            if (quantity.compareTo(item.getQuantity()) != 0) {
                 item.setQuantity(quantity, dispatcher, this);
             }
         }
